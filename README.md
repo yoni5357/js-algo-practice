@@ -4,17 +4,12 @@ Hi! This repo is made for you to practice your coding interview skills. For some
 
 
 How to use it:
-- Clone the repo to your projects / dev folder
-- Run the command in the terminal : 'npm install'
-- Start writing your code in the proper files.
-- To run a test for a specific exercise do:
+- Fork and then clone the repo to your projects / dev folder
+- Run the command in the terminal `npm install`
+- Start writing your code in the proper files
+- To run a test for a specific exercise (e.g. arrayOfMultiples) do:
 ```
-npm run test01
+npm run test-arrayOfMultiples
 ```
-or
-```
-npm run test
-```
-to run all the tests.
 
 #Happy coding!
