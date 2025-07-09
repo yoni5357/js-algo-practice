@@ -13,8 +13,30 @@ The array may contain duplicates.
 Multiple solutions can exist, any solution is sufficient to return true.
 */
 
-function canPartition( /*args*/ ) {
-  //your code
+const { has } = require("@babel/preset-env/lib/utils");
+
+function canPartition(arr) {
+  const totalProduct = arr.reduce((acc, val) => acc * val, 1);
+  let hasZero = false;
+  
+  for (let i = 0; i < arr.length; i++) {
+    const currentElement = arr[i];
+    if (currentElement === 0 ) {
+      if(hasZero){
+        return true; 
+      }
+      hasZero = true;
+      continue; 
+    }
+    const productOfOthers = totalProduct / currentElement;
+    
+    if (currentElement === productOfOthers) {
+      return true;
+    }
+  }
+  
+  return false;
+  
 }
 
 exports.solution = canPartition;

@@ -11,8 +11,29 @@ Notes
 If the input tries to divide by 0, return: "Can't divide by 0!"
 */
 
-function calculator( /*args*/ ) {
-  //your code
+function calculator(a, op, b) {
+  if(op === "/"){
+    if(b === 0){
+      return "Can't divide by 0!"
+    }
+    return a / b
+  }
+
+  else if(op === "+"){
+    return a + b;
+  }
+
+  else if(op ==="-"){
+    return a - b
+  }
+
+  else if(op === "*"){
+    return a*b
+  }
+
+  else{
+    return "invalid operator"
+  }
 }
 
 exports.solution = calculator;
