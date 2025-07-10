@@ -30,8 +30,20 @@ Notes
 All inputs are strings, no uppercases and all output must be strings.
 */
 
-function encrypt( /*args*/ ) {
-  //your code
+function encrypt(word) {
+  let vowelMap = {"a":"0", "e":"1", "i":"2", "o":"2", "u":"3"}
+  let reversed = ""
+  for(let i = word.length - 1; i >= 0; i--){
+    let char = word[i]
+    if(vowelMap[char]){
+      reversed += vowelMap[char]
+    }
+    else{
+      reversed += char
+    }
+  }
+  reversed += "aca"
+  return reversed
 }
 
 exports.solution = encrypt;
