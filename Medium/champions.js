@@ -35,8 +35,54 @@ champions([
 ➞ "Manchester United"
 */
 
-function champions( /*args*/ ) {
-  //your code
+function champions(clubs) {
+  let maxScore = 0;
+  let maxGoals = 0;
+  let winner;
+  let scores = clubs.map((club) => {
+    let score = parseInt(club.wins) * 3 + parseInt(club.draws) ;
+    let goals = parseInt(club.scored) - parseInt(club.conceded);
+    return {name:club.name, score:score, goals:goals};
+  })
+  for(let club of scores){
+    if(club.score > maxScore){
+      maxScore = club.score;
+      maxGoals = club.goals;
+      winner = club.name;
+    }
+    else if(club.score === maxScore){
+      winner = club.goals > maxGoals ? club.name : winner;
+    }
+  }
+  return winner;
 }
+
+champions([
+ {
+ name: "Manchester United",
+ wins: 30,
+ loss: 3,
+ draws: 5,
+ scored: 88,
+ conceded: 20,
+ },
+ {
+ name: "Arsenal",
+ wins: 24,
+ loss: 6,
+ draws: 8,
+ scored: 98,
+ conceded: 29,
+ },
+ {
+ name: "Chelsea",
+ wins: 22,
+ loss: 8,
+ draws: 8,
+ scored: 98,
+ conceded: 29,
+ },
+])
+
 
 exports.solution = champions;
