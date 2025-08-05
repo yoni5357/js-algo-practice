@@ -14,8 +14,14 @@ Notes
 Remember to sort the keys.
 */
 
-function keysAndValues( /*args*/ ) {
-  //your code
+function keysAndValues( obj ) {
+  let keys = [];
+  let values = [];
+  for(let key in obj){
+    values.push(obj[key]);
+    keys.push(key);
+  }
+  return [keys,values];
 }
 
 exports.solution = keysAndValues;
