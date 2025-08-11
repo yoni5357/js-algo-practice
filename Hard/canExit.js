@@ -44,8 +44,37 @@ In a maze of size m x n, you enter at [0, 0] and exit at [m-1, n-1].
 There can be dead ends in a maze - one exit path is sufficient.
 */
 
-function canExit( /*args*/ ) {
-  //your code
+function canExit(maze) {
+
+  const q = [];
+  const visited = Array.from({ length:maze.length}, () => Array(maze[0].length).fill(false));
+  q.push({x:0,y:0});
+
+  while (q.length){
+    let node = q.pop();
+    visited[node.x][node.y] = true;
+
+    if(maze[node.x][node.y] === 1){
+      continue;
+    }
+    if(node.x === maze.length - 1 && node.y === maze[0].length - 1){
+      return true
+    }
+    if(node.x > 0 && !visited[node.x-1][node.y]){
+      q.push({x:node.x-1,y:node.y})
+    }
+    if(node.y > 0 && !visited[node.x][node.y-1]){
+      q.push({x:node.x,y:node.y-1})
+    }
+    if(node.x < maze.length - 1 && !visited[node.x+1][node.y]){
+      q.push({x:node.x + 1, y:node.y})
+    }
+    if(node.y < maze[0].length - 1 && !visited[node.x][node.y+1]){
+      q.push({x:node.x,y:node.y + 1})
+    }
+
+  }
+  return false
 }
 
 exports.solution = canExit;

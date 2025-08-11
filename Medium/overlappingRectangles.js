@@ -21,8 +21,22 @@ Notes
 Coordinates can be positive or negative integers.
 */
 
-function overlappingRectangles( /*args*/ ) {
-  //your code
+function overlappingRectangles(r1, r2) {
+  let ymax = Math.min(Math.max(r1[0].y,r1[1].y),Math.max(r2[0].y, r2[1].y))
+  let ymin = Math.max(Math.min(r1[0].y,r1[1].y),Math.min(r2[0].y, r2[1].y))
+  let xmax = Math.min(Math.max(r1[0].x,r1[1].x),Math.max(r2[0].x, r2[1].x))
+  let xmin = Math.max(Math.min(r1[0].x,r1[1].x),Math.min(r2[0].x, r2[1].x))
+
+  if(ymax < ymin || xmax < xmin){
+    return 0;
+  }
+
+  let a = Math.abs((ymax) - ymin)
+  let b = Math.abs((xmax) - xmin)
+  return a * b;
 }
+
+overlappingRectangles(  [{ x: 2, y: 1 }, { x: 5, y: 5 }],
+  [{ x: 3, y: 2 }, { x: 5, y: 7 }])
 
 exports.solution = overlappingRectangles;
