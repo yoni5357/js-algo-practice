@@ -18,8 +18,31 @@ Notes
 More specifically, look at the overlap between the previous words ending letters and the next word's beginning letters.
 */
 
-function join( /*args*/ ) {
-  //your code
+function join(strList) {
+  let minOverlap;
+  let res = strList[0];
+  for(let i = 1; i < strList.length; i++){
+    let currOverlap = 0;
+    let lStr = strList[i-1];
+    let rStr = strList[i];
+    let l = 0;
+    let r = 0;
+    while(lStr[l] !== rStr[r]){
+      l++;
+    }
+    while(lStr[l] === rStr[r]){
+      currOverlap++;
+      l++;
+      r++;
+    }
+    minOverlap = Math.min(minOverlap,currOverlap);
+    res += rStr.slice(r);
+  }
+  return res;
 }
+
+//doesnt work
+
+console.log(join(["oven", "envier", "erase", "serious"]));
 
 exports.solution = join;
